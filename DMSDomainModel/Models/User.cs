@@ -7,6 +7,7 @@ namespace DMSDomainModel.Models
     {
         public User()
         {
+            Document = new HashSet<Document>();
             Transaction = new HashSet<Transaction>();
         }
 
@@ -19,6 +20,7 @@ namespace DMSDomainModel.Models
         public DateTime? DateTimeStamp { get; set; }
 
         public virtual Role RoleNavigation { get; set; }
+        public virtual ICollection<Document> Document { get; set; }
         public virtual ICollection<Transaction> Transaction { get; set; }
     }
 }

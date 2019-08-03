@@ -19,6 +19,7 @@ namespace DMSDomainModel.Models
         public virtual DbSet<Document> Document { get; set; }
         public virtual DbSet<Role> Role { get; set; }
         public virtual DbSet<Transaction> Transaction { get; set; }
+        public virtual DbSet<TransactionType> TransactionType { get; set; }
         public virtual DbSet<User> User { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -49,6 +50,11 @@ namespace DMSDomainModel.Models
                     .WithMany(p => p.Document)
                     .HasForeignKey(d => d.CategoryId)
                     .HasConstraintName("FK_Document_Category");
+
+                entity.HasOne(d => d.User)
+                    .WithMany(p => p.Document)
+                    .HasForeignKey(d => d.UserId)
+                    .HasConstraintName("FK_Document_User");
             });
 
             modelBuilder.Entity<Role>(entity =>
@@ -62,17 +68,25 @@ namespace DMSDomainModel.Models
             {
                 entity.Property(e => e.DateTimeStamp).HasColumnType("datetime");
 
-                entity.Property(e => e.TransDate).HasColumnType("datetime");
-
                 entity.HasOne(d => d.Document)
                     .WithMany(p => p.Transaction)
                     .HasForeignKey(d => d.DocumentId)
                     .HasConstraintName("FK_Transaction_Document");
 
+                entity.HasOne(d => d.TransactionType)
+                    .WithMany(p => p.Transaction)
+                    .HasForeignKey(d => d.TransactionTypeId)
+                    .HasConstraintName("FK_Transaction_TransactionType");
+
                 entity.HasOne(d => d.User)
                     .WithMany(p => p.Transaction)
                     .HasForeignKey(d => d.UserId)
                     .HasConstraintName("FK_Transaction_User");
+            });
+
+            modelBuilder.Entity<TransactionType>(entity =>
+            {
+                entity.Property(e => e.Type).HasMaxLength(25);
             });
 
             modelBuilder.Entity<User>(entity =>

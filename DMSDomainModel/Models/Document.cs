@@ -15,8 +15,11 @@ namespace DMSDomainModel.Models
         public string Path { get; set; }
         public int? CategoryId { get; set; }
         public DateTime? DateTimeStamp { get; set; }
+        public long? Size { get; set; }
+        public int? UserId { get; set; }
 
         public virtual Category Category { get; set; }
+        public virtual User User { get; set; }
         public virtual ICollection<Transaction> Transaction { get; set; }
     }
 }
