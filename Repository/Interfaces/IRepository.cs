@@ -8,7 +8,7 @@ namespace Repository.Interfaces
     /// CRUD operations interface on a Generic type.
     /// </summary>
     /// <typeparam name="TEntity">Target generic type</typeparam>
-    public interface IRepository<TEntity> : IUnitOfWork, IDisposable where TEntity : class
+    public interface IRepository<TEntity> : IUnitOfWork, IDisposable
     {
         /// <summary>
         /// Adds new entity object.

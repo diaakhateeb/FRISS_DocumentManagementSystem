@@ -5,7 +5,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\CustomLogger\CustomLogger.csproj" />
+    <ProjectReference Include="..\DocumentRepository.Api\DocumentRepository.Api.csproj" />
     <ProjectReference Include="..\Repository\Repository.csproj" />
+    <ProjectReference Include="..\UserRepository.Api\UserRepository.Api.csproj" />
   </ItemGroup>
 
   <ItemGroup>
