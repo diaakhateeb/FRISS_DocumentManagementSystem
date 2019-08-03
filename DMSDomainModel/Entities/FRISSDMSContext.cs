@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using System;
 
-namespace DMSDomainModel.Models
+namespace DMSDomainModel.Entities
 {
     public partial class FRISSDMSContext : DbContext
     {

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace DMSDomainModel.Models
+namespace DMSDomainModel.Entities
 {
     public partial class Role
     {
